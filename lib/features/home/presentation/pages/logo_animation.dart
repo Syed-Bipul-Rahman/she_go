@@ -43,32 +43,41 @@ class _LogoAnimationScreenState extends State<LogoAnimationScreen>
   }
 
   void _startAnimation() async {
-    // First animation: "SHE"
+    // First animation: "Empowering"
     setState(() {
-      _displayText = 'SHE';
+      _displayText = 'Empowering';
     });
 
-    // Play zoom out animation for "SHE"
+    // Play zoom out animation for "Empowering"
     await _controller.forward();
 
-    // Wait a bit before starting "GO" animation
+    // Wait a bit before starting "Women" animation
     await Future.delayed(const Duration(milliseconds: 200));
 
-    // Reset controller for "GO" animation
+    // Reset controller for "Women" animation
     _controller.reset();
 
-    // Second animation: "GO"
+    // Second animation: "Women"
     setState(() {
-      _displayText = 'GO';
+      _displayText = 'Women';
     });
 
-    // Play zoom out animation for "GO"
+    // Play zoom out animation for "Women"
     await _controller.forward();
 
-    // Show logo
+    // Wait a bit before starting logo animation
+    await Future.delayed(const Duration(milliseconds: 200));
+
+    // Reset controller for logo animation
+    _controller.reset();
+
+    // Show logo and start its animation
     setState(() {
       _showLogo = true;
     });
+
+    // Play zoom out animation for logo
+    await _controller.forward();
   }
 
   @override
@@ -85,44 +94,32 @@ class _LogoAnimationScreenState extends State<LogoAnimationScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // SvgPicture.asset(AppImages.appLogo, height: 120, width: 120),
-            if (!_showLogo)
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (context, child) {
-                  return Transform.scale(
-                    scale: _scaleAnimation.value,
-                    child: Opacity(
-                      opacity: _opacityAnimation.value,
-                      child: Text(
-                        _displayText,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 80,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            if (_showLogo)
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (context, child) {
-                  return Transform.scale(
-                    scale: _scaleAnimation.value,
-                    child: Opacity(
-                      opacity: _opacityAnimation.value,
-                      child: SvgPicture.asset(
-                        AppImages.appLogo,
-                        height: 120,
-                        width: 120,
-                      ),
-                    ),
-                  );
-                },
-              ),
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Transform.scale(
+                  scale: _scaleAnimation.value,
+                  child: Opacity(
+                    opacity: _opacityAnimation.value,
+                    child:
+                        _showLogo
+                            ? SvgPicture.asset(
+                              AppImages.appLogo,
+                              height: 120,
+                              width: 120,
+                            )
+                            : Text(
+                              _displayText,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 60,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
