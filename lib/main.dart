@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'My App',
       theme: AppThemes.lightTheme,
-      initialRoute: RouteNames.home,
+      initialRoute: RouteNames.splash,
       getPages: AppRouter.routes,
     );
   }

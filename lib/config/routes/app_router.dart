@@ -5,6 +5,7 @@ import 'route_names.dart';
 
 class AppRouter {
   static final routes = [
-    GetPage(name: RouteNames.home, page: () => const LogoAnimationScreen()),
+    GetPage(name: RouteNames.home, page: () => const HomePage()),
+    GetPage(name: RouteNames.splash, page: () => const LogoAnimationScreen()),
   ];
 }
