@@ -12,6 +12,7 @@ class PrimaryButton extends StatelessWidget {
   final bool isActive;
   final String? svgAsset;
   final double iconSize;
+  final double radius;
 
   const PrimaryButton({
     super.key,
@@ -22,6 +23,7 @@ class PrimaryButton extends StatelessWidget {
     this.isActive = true,
     this.iconSize = 20,
     this.svgAsset,
+    this.radius = 100,
   });
 
   @override
@@ -37,7 +39,7 @@ class PrimaryButton extends StatelessWidget {
               (isActive ? AppColors.primary : Color(0xFF1F222A)),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
+            borderRadius: BorderRadius.circular(radius),
           ),
         ),
         child: Row(
@@ -55,8 +57,8 @@ class PrimaryButton extends StatelessWidget {
             ],
             Text(
               text,
-              style: GoogleFonts.urbanist(
-                fontWeight: FontWeight.w700,
+              style: GoogleFonts.outfit(
+                fontWeight: FontWeight.w500,
                 fontSize: 16,
                 color: Colors.white,
               ),

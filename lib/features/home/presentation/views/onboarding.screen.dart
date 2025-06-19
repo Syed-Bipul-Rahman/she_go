@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shego/config/routes/app_router.dart';
+import 'package:shego/config/routes/route_names.dart';
+import 'package:shego/shared/widgets/buttons/primary_buttons.dart';
 
 import '../../../../core/utils/app_image.dart';
 
@@ -34,6 +38,15 @@ class OnboardingPage extends StatelessWidget {
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                 ),
+              ),
+              SizedBox(height: 24),
+              PrimaryButton(
+                radius: 4,
+                onPressed: () {
+                  Get.toNamed(RouteNames.joinAs);
+                },
+                text: "Get started",
+                width: Get.width,
               ),
             ],
           ),
