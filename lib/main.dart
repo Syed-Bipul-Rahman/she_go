@@ -7,9 +7,9 @@ import 'core/utils/logger.dart';
 import 'shared/theme/app_themes.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Required for async initialization
+  WidgetsFlutterBinding.ensureInitialized();
   AppLogger.setup();
-  await Injector.init(); // Ensure injector completes before app starts
+  await Injector.init();
   runApp(const MyApp());
 }
 
@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'My App',
+      title: 'SheGo',
       theme: AppThemes.lightTheme,
-      initialRoute: RouteNames.home,
+      initialRoute: RouteNames.splash,
       getPages: AppRouter.routes,
     );
   }

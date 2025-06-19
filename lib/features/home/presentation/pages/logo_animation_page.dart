@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:shego/config/routes/app_router.dart';
+import 'package:shego/config/routes/route_names.dart';
 import 'package:shego/shared/theme/app_colors.dart';
 
 import '../../../../core/utils/app_image.dart';
@@ -78,6 +82,12 @@ class _LogoAnimationScreenState extends State<LogoAnimationScreen>
 
     // Play zoom out animation for logo
     await _controller.forward();
+
+    // Wait 1000ms after all animations complete
+    await Future.delayed(const Duration(milliseconds: 1000));
+
+    // Navigate to onboarding screen and remove all previous routes
+    Get.offAllNamed(RouteNames.onboarding);
   }
 
   @override
