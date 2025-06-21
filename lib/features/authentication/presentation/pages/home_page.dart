@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../viewmodels/home_veiwmodel.dart';
-import '../views/home_view.dart';
+import '../views/login_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,6 +13,6 @@ class HomePage extends StatelessWidget {
     if (!Get.isRegistered<HomeViewModel>()) {
       Get.find<HomeViewModel>(); // Trigger lazy instantiation
     }
-    return const HomeView();
+    return const LoginView();
   }
 }

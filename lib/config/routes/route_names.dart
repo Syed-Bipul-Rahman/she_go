@@ -3,4 +3,5 @@ class RouteNames {
   static const String home = '/home';
   static const String onboarding = '/onboarding';
   static const String joinAs = '/joinAs';
+  static const String login = '/login';
 }
