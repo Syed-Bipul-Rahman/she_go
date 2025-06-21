@@ -7,8 +7,6 @@ import 'package:shego/shared/theme/app_colors.dart';
 import 'package:shego/shared/widgets/buttons/primary_buttons.dart';
 import 'package:shego/shared/widgets/update_textFields.dart';
 
-import '../../../../shared/widgets/pin_code_text_field.dart';
-
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
 
