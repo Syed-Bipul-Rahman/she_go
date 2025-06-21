@@ -157,18 +157,7 @@ class RegisterView extends StatelessWidget {
               ),
 
               SizedBox(height: 24),
-              GestureDetector(
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Text(
-                    "Forgot Password",
-                    style: GoogleFonts.outfit(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-              ),
+
               SizedBox(height: 26),
               PrimaryButton(
                 onPressed: () {},
