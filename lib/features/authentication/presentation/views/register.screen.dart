@@ -156,11 +156,12 @@ class RegisterView extends StatelessWidget {
                 isPasswordField: true,
               ),
 
-              SizedBox(height: 24),
+              SizedBox(height: 40),
 
-              SizedBox(height: 26),
               PrimaryButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.offAllNamed(RouteNames.verifyEmail);
+                },
                 text: "Sign Up",
                 width: Get.width,
                 radius: 4,

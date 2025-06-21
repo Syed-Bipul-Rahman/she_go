@@ -7,4 +7,5 @@ class RouteNames {
   static const String register = '/register';
   static const String forgot = '/forgot';
   static const String verifyEmail = '/verifyEmail';
+  static const String resetPassword = '/resetPassword';
 }

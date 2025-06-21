@@ -75,7 +75,9 @@ class VerifyEmail extends StatelessWidget {
 
               SizedBox(height: 40),
               PrimaryButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.offAllNamed(RouteNames.resetPassword);
+                },
                 text: "Verify Email",
                 width: Get.width,
                 radius: 4,

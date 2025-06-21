@@ -11,12 +11,24 @@ class HomeView extends StatelessWidget {
     final HomeViewModel viewModel = Get.find();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: Obx(
-        () => LazyLoadingList(
-          items: viewModel.items,
-          isLoading: viewModel.isLoading.value,
-          onLoadMore: viewModel.fetchData,
+      // appBar: AppBar(title: const Text('Home')),
+      // body: Obx(
+      //   () => LazyLoadingList(
+      //     items: viewModel.items,
+      //     isLoading: viewModel.isLoading.value,
+      //     onLoadMore: viewModel.fetchData,
+      //   ),
+      // ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Icon(Icons.location_on),
+                Text("3891 Ranchview Dr. Richardson, California 62639"),
+              ],
+            ),
+          ],
         ),
       ),
     );
