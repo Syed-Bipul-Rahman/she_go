@@ -47,6 +47,7 @@ class UpdateTextField extends StatefulWidget {
   final Widget? prefixIcon;
   final double prefixIconSize;
   final Color? prefixIconColor;
+  final bool applyPrefixIconColor;
   final EdgeInsetsGeometry? prefixIconPadding;
 
   final String? suffixIconPath;
@@ -120,6 +121,7 @@ class UpdateTextField extends StatefulWidget {
     this.prefixIcon,
     this.prefixIconSize = 24.0,
     this.prefixIconColor,
+    this.applyPrefixIconColor = true,
     this.prefixIconPadding,
 
     this.suffixIconPath,
@@ -217,10 +219,16 @@ class _UpdateTextFieldState extends State<UpdateTextField> {
           widget.prefixIconPath!,
           width: widget.prefixIconSize,
           height: widget.prefixIconSize,
+          // MODIFIED: Only apply color filter if applyPrefixIconColor is true
           colorFilter:
-              widget.prefixIconColor != null
-                  ? ColorFilter.mode(widget.prefixIconColor!, BlendMode.srcIn)
-                  : ColorFilter.mode(_defaultIconColor, BlendMode.srcIn),
+              widget.applyPrefixIconColor
+                  ? (widget.prefixIconColor != null
+                      ? ColorFilter.mode(
+                        widget.prefixIconColor!,
+                        BlendMode.srcIn,
+                      )
+                      : ColorFilter.mode(_defaultIconColor, BlendMode.srcIn))
+                  : null,
         ),
       );
     }
@@ -449,12 +457,16 @@ class CustomTextFieldVariants {
     Color? fillColor,
     Color? borderColor,
     Color? focusedBorderColor,
+    Color? prefixIconColor,
+    bool applyPrefixIconColor = true,
   }) {
     return UpdateTextField(
       hintText: hintText,
       controller: controller,
       keyboardType: TextInputType.emailAddress,
       prefixIconPath: prefixIconPath,
+      prefixIconColor: prefixIconColor,
+      applyPrefixIconColor: applyPrefixIconColor,
       validator:
           validator ??
           (value) {
@@ -486,12 +498,16 @@ class CustomTextFieldVariants {
     Color? fillColor,
     Color? borderColor,
     Color? focusedBorderColor,
+    Color? prefixIconColor,
+    bool applyPrefixIconColor = true,
   }) {
     return UpdateTextField(
       hintText: hintText,
       controller: controller,
       isPasswordField: true,
       prefixIconPath: prefixIconPath,
+      prefixIconColor: prefixIconColor,
+      applyPrefixIconColor: applyPrefixIconColor,
       passwordVisibleIconPath: passwordVisibleIconPath,
       passwordHiddenIconPath: passwordHiddenIconPath,
       validator: validator,
@@ -512,11 +528,15 @@ class CustomTextFieldVariants {
     Color? fillColor,
     Color? borderColor,
     double borderRadius = 25.0,
+    Color? prefixIconColor,
+    bool applyPrefixIconColor = true,
   }) {
     return UpdateTextField(
       hintText: hintText,
       controller: controller,
       prefixIconPath: prefixIconPath,
+      prefixIconColor: prefixIconColor,
+      applyPrefixIconColor: applyPrefixIconColor,
       suffixIconPath: suffixIconPath,
       onSuffixIconTap: onSuffixIconTap,
       onChanged: onChanged,

@@ -4,4 +4,5 @@ class RouteNames {
   static const String onboarding = '/onboarding';
   static const String joinAs = '/joinAs';
   static const String login = '/login';
+  static const String register = '/register';
 }

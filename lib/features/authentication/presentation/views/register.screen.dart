@@ -9,8 +9,8 @@ import 'package:shego/shared/widgets/update_textFields.dart';
 import '../viewmodels/home_veiwmodel.dart';
 import '../widgets/lazy_loading_list.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class LoginView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Sign in to your account",
+                      "Sign up with Email",
                       style: GoogleFonts.outfit(
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
@@ -46,7 +46,7 @@ class LoginView extends StatelessWidget {
               SizedBox(height: 16),
               Center(
                 child: Text(
-                  "Welcome! Sign in to your account to continue.",
+                  "Welcome Back! Please enter your details.",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.outfit(
                     fontWeight: FontWeight.w400,
@@ -57,7 +57,7 @@ class LoginView extends StatelessWidget {
               ),
               SizedBox(height: 24),
               Text(
-                "Your Email",
+                "User Name",
                 style: GoogleFonts.outfit(
                   fontWeight: FontWeight.w600,
                   fontSize: 16,
@@ -66,6 +66,27 @@ class LoginView extends StatelessWidget {
               SizedBox(height: 8),
               // With full customization
               UpdateTextField(
+                applyPrefixIconColor: false,
+                hintText: "Enter username",
+                prefixIconPath: AppImages.userIcons,
+                fillColor: AppColors.secondary,
+                borderColor: AppColors.primary,
+                focusedBorderColor: AppColors.primaryDark,
+                borderRadius: 32,
+                borderWidth: 1.0,
+              ),
+              SizedBox(height: 12),
+              Text(
+                "Email",
+                style: GoogleFonts.outfit(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                ),
+              ),
+              SizedBox(height: 8),
+              // With full customization
+              UpdateTextField(
+                applyPrefixIconColor: false,
                 hintText: "Enter Email",
                 prefixIconPath: AppImages.email,
                 fillColor: AppColors.secondary,
@@ -76,7 +97,47 @@ class LoginView extends StatelessWidget {
               ),
               SizedBox(height: 12),
               Text(
+                "Date of Birth",
+                style: GoogleFonts.outfit(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                ),
+              ),
+              SizedBox(height: 8),
+              // With full customization
+              UpdateTextField(
+                applyPrefixIconColor: false,
+                hintText: "DD-MM-YY",
+                prefixIconPath: AppImages.calender,
+                fillColor: AppColors.secondary,
+                borderColor: AppColors.primary,
+                focusedBorderColor: AppColors.primaryDark,
+                borderRadius: 32,
+                borderWidth: 1.0,
+              ),
+              SizedBox(height: 12),
+              Text(
                 "Password",
+                style: GoogleFonts.outfit(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                ),
+              ),
+              SizedBox(height: 8),
+              // With full customization
+              UpdateTextField(
+                hintText: "Enter Password",
+                prefixIconPath: AppImages.lockIcon,
+                fillColor: AppColors.secondary,
+                borderColor: AppColors.primary,
+                focusedBorderColor: AppColors.primaryDark,
+                borderRadius: 32,
+                borderWidth: 1.0,
+                isPasswordField: true,
+              ),
+              SizedBox(height: 12),
+              Text(
+                "Confirm Password",
                 style: GoogleFonts.outfit(
                   fontWeight: FontWeight.w600,
                   fontSize: 16,
@@ -111,7 +172,7 @@ class LoginView extends StatelessWidget {
               SizedBox(height: 26),
               PrimaryButton(
                 onPressed: () {},
-                text: "Log In",
+                text: "Sign Up",
                 width: Get.width,
                 radius: 4,
               ),
@@ -129,10 +190,10 @@ class LoginView extends StatelessWidget {
                   SizedBox(width: 8),
                   GestureDetector(
                     onTap: () {
-                      Get.offAllNamed(RouteNames.register);
+                      Get.offAllNamed(RouteNames.login);
                     },
                     child: Text(
-                      "Sign Up",
+                      "Login",
                       style: GoogleFonts.outfit(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,

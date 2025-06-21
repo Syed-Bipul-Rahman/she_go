@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shego/features/authentication/presentation/views/login_view.dart';
+import '../../features/authentication/presentation/views/register.screen.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/home/presentation/pages/logo_animation_page.dart';
 import '../../features/home/presentation/views/join_as.screen.dart';
@@ -13,5 +14,6 @@ class AppRouter {
     GetPage(name: RouteNames.onboarding, page: () => const OnboardingPage()),
     GetPage(name: RouteNames.joinAs, page: () => const JoinAs()),
     GetPage(name: RouteNames.login, page: () => const LoginView()),
+    GetPage(name: RouteNames.register, page: () => const RegisterView()),
   ];
 }
