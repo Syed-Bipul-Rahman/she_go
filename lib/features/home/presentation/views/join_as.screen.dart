@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shego/config/routes/app_router.dart';
+import 'package:shego/config/routes/route_names.dart';
 import 'package:shego/shared/theme/app_colors.dart';
 
 import '../../../../core/utils/app_image.dart';
 import '../../../../core/utils/log_helper.dart';
 import '../../../../shared/widgets/buttons/primary_buttons.dart';
+import '../viewmodels/local_data.controller.dart';
 
 class JoinAs extends StatefulWidget {
   const JoinAs({super.key});
@@ -15,24 +19,15 @@ class JoinAs extends StatefulWidget {
 }
 
 class _JoinAsState extends State<JoinAs> {
-  String? selectedOption;
-  List<Map<String, String>> cycleOptions = [
-    {
-      "header": "User",
-      "description": "Create your account User",
-      "icon": AppImages.driverIcon,
-    },
-    {
-      "header": "Driver",
-      "description": "Create your account and\nBegin your journey",
-      "icon": AppImages.userIcon,
-    },
-  ];
+  final LocalDataController _localDataController = Get.put(
+    LocalDataController(),
+  );
 
   @override
   void initState() {
     super.initState();
-    selectedOption = cycleOptions[0]["header"];
+    _localDataController.selectedOption =
+        _localDataController.joinOptions[0]["header"];
   }
 
   @override
@@ -62,7 +57,7 @@ class _JoinAsState extends State<JoinAs> {
             ),
             SizedBox(height: 16),
             // Selectable options
-            ...cycleOptions.map(
+            ..._localDataController.joinOptions.map(
               (option) => Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16.0,
@@ -77,11 +72,7 @@ class _JoinAsState extends State<JoinAs> {
               child: PrimaryButton(
                 radius: 4,
                 onPressed: () {
-                  if (selectedOption == "Business") {
-                    //Get.toNamed(Approu.RESTAURANT_HOME_PAGE);
-                  } else {
-                    // Get.toNamed(Routes.LOGIN_PAGE);
-                  }
+                  Get.offAllNamed(RouteNames.login);
                 },
                 text: "Continue",
                 width: double.infinity,
@@ -94,13 +85,13 @@ class _JoinAsState extends State<JoinAs> {
   }
 
   Widget _buildSelectableOption(Map<String, String> option) {
-    bool isSelected = selectedOption == option["header"];
+    bool isSelected = _localDataController.selectedOption == option["header"];
 
     return GestureDetector(
       onTap: () {
         setState(() {
-          selectedOption = option["header"];
-          LoggerHelper.info(selectedOption);
+          _localDataController.selectedOption = option["header"];
+          LoggerHelper.info(_localDataController.selectedOption);
         });
       },
       child: Container(
@@ -166,7 +157,6 @@ class _JoinAsState extends State<JoinAs> {
                         : null,
               ),
             ),
-            // Checkbox(value: isSelected, onChanged: (value) {}),
           ],
         ),
       ),
