@@ -11,4 +11,5 @@ class AppImages {
   static String lockIcon = "$baseUrl/lock_icon.svg";
   static String userIcons = "$baseUrl/user_icon_without_bg.svg";
   static String calender = "$baseUrl/calender.svg";
+  static String carImage = "$baseUrl/carImage.svg";
 }
